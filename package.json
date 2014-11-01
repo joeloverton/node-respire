@@ -1,0 +1,43 @@
+{
+  "name": "respire",
+  "version": "0.0.0",
+  "description": "Respire: Expressive, Succinct Promise Interfaces for Routing in Express",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node node_modules/mocha/bin/mocha ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joeloverton/respire"
+  },
+  "keywords": [
+    "express",
+    "q",
+    "promise",
+    "routing",
+    "render",
+    "response"
+  ],
+  "author": "Joel Overton <npm@joeloverton.com> (http://joeloverton.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/joeloverton/respire/issues"
+  },
+  "homepage": "https://github.com/joeloverton/respire",
+  "devDependencies": {
+    "mocha": "^2.0.1",
+    "express": "^4.10.1",
+    "supertest": "^0.14.0",
+    "consolidate": "^0.10.0",
+    "handlebars": "^2.0.0",
+    "should": "^4.1.0"
+  },
+  "dependencies": {
+    "lodash": "^2.4.1",
+    "q": "^1.0.1",
+    "q-combinators": "^0.4.2"
+  }
+}
