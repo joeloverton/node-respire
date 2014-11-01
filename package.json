@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/joeloverton/respire"
+    "url": "https://github.com/joeloverton/node-respire"
   },
   "keywords": [
     "express",
@@ -24,9 +24,9 @@
   "author": "Joel Overton <npm@joeloverton.com> (http://joeloverton.com)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/joeloverton/respire/issues"
+    "url": "https://github.com/joeloverton/node-respire/issues"
   },
-  "homepage": "https://github.com/joeloverton/respire",
+  "homepage": "https://github.com/joeloverton/node-respire",
   "devDependencies": {
     "mocha": "^2.0.1",
     "express": "^4.10.1",
