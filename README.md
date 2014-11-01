@@ -24,7 +24,12 @@ app.get('/u/:username', function (req, res, next) {
 });
 ```
 
+### req.process
+
 `req.process` simply wraps a function call using `Q.fncall(fn, req, res)`.
+
+
+### res.renderInto
 
 `res.renderInto` uses `res.render` under the hood, so templates work as they ever did.
 
@@ -47,7 +52,11 @@ function getUserData (req) {
 
 The output of `res.renderInto` is a `RenderedContext`. It wraps the original data and a record of any failed promises. This is great for debugging, and can also be useful in template logic when composing subviews.
 
+
+### res.respond
+
 `res.respond` provides `withHTML`, `withJSON`, `withErrorPage` and `withErrorJSON`. 
+
 
 ## Error handling
 
@@ -68,7 +77,8 @@ Problems of this nature usually call for an error page. `res.respond.withErrorPa
   - It expects `err.statusCode` to be an HTTP error code (e.g. `401`)
   - It expects a template to exist for that code in `<views>/errors` (e.g. `401.hbs` or, failing that, `4xx.hbs`)
 
-## Error page middleware
+
+### respire.middleware.errorPages
 
 The error page middleware ensures that all types of unhandled error on all routes result in error pages being served. It also provides some options.
 
@@ -81,6 +91,7 @@ app.use(respire.middleware.errorPages({
 }));
 ```
 The `?debug` feature gives you access to a stack trace for the error. If the error represents multiple failed required fields, they will all be listed.
+
 
 ## Composing views
 
@@ -130,3 +141,10 @@ Here's `chrome/standard-page.hbs`:
 </html>
 ```
 
+## Future plans
+
+Next up:-
+- Shorthand for render + respond (as you expect from res.render)
+- Debugging rendered pages (i.e to see which promises rejected and why)
+- Grouping other logging activity by the pageView which triggered it
+- A good pattern for setting headers, serving redirects, etc.
