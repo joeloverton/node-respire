@@ -15,7 +15,7 @@ module.exports = function (app) {
 
 function renderUserPage(req, res, next) {
     req.process(getUserData)                // Get a bunch of template keys
-        .then(respire.demand('name'))       // Make sure the 'userData' key is set
+        .then(respire.demand('name'))       // Make sure the 'name' key is set
         .then(res.renderInto('user'))       // Render the users page
         .then(res.renderInto('chrome'))     // Place the users page inside the page template
         .then(res.respond.withHTML)         // Serve the page to the user
