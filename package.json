@@ -1,6 +1,6 @@
 {
   "name": "respire",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Respire: Expressive, Succinct Promise Interfaces for Routing in Express",
   "main": "index.js",
   "directories": {
