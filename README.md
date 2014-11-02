@@ -1,7 +1,13 @@
-node-respire
-============
-
 Respire: Expressive, Succinct Promise Interfaces for Routing in Express
+=======================================================================
+
+Express is often used to aggregate data from APIs and databases into views. Promises make control flow and error handling clearer. This express middleware adds some APIs to the request and response objects to simplify the typical fetch/render/respond use case.
+
+## Installation
+
+```
+npm install --save respire
+```
 
 ## Usage
 
@@ -50,7 +56,7 @@ function getUserData (req) {
 }
 ```
 
-The output of `res.renderInto` is a `RenderedContext`. It wraps the original data and a record of any failed promises. This is great for debugging, and can also be useful in template logic when composing subviews.
+The output of `res.renderInto` is a `RenderedContext`. It wraps the original data and a record of any failed promises. This is great for debugging, and can also be useful in template logic when [composing views](#user-content-composing-views).
 
 
 ### res.respond
@@ -140,6 +146,8 @@ Here's `chrome/standard-page.hbs`:
   </body>
 </html>
 ```
+
+Notice how (in handlebars, at least) accessing `{{{this}}}` calls `toString` on the RenderedContext, while the original data is still accessible on `this.data`.
 
 ## Future plans
 
