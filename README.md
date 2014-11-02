@@ -26,7 +26,7 @@ app.get('/u/:username', function (req, res, next) {
 
 ### req.process
 
-`req.process` simply wraps a function call using `Q.fncall(fn, req, res)`.
+`req.process` simply wraps a function call using `Q.fcall(fn, req, res)`.
 
 
 ### res.renderInto
