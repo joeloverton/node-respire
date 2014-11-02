@@ -22,10 +22,10 @@ A promise chain helps to organise the route function into steps.
 
 ```javascript
 app.get('/u/:username', function (req, res, next) {
-  req.process(getUserData)              // Grab all the async stuff needed to render this page
+  req.process(getUserData)              // Get some data asynchronously
     .then(res.renderInto('pages/user')) // Render it into a template
     .then(res.respond.withHTML)         // Serve it up
-    .catch(next)                        // If something goes wrong, explode
+    .catch(next)                        // If something went wrong, explode
     .done();                            // Thank you Q, that will be all
 });
 ```
@@ -56,8 +56,7 @@ function getUserData (req) {
 }
 ```
 
-The output of `res.renderInto` is a `RenderedContext`. It wraps the original data and a record of any failed promises. This is great for debugging, and can also be useful in template logic when [composing views](#user-content-composing-views).
-
+The output of `res.renderInto` is a `RenderedContext`. Its `.toString()` method returns the rendered template. It also exposes reasons for failed fields on `.rejected`, and the original data on `.data`. This is great for debugging, and can also be useful in templates when [composing views](#user-content-composing-views).
 
 ### res.respond
 
@@ -91,9 +90,9 @@ The error page middleware ensures that all types of unhandled error on all route
 ```javascript
 app.use(respire.middleware.errorPages({
     debug: true,          // Enable the debug feature
-    debugParam: 'debug',  // The query parameter which shows debug info
+    debugParam: 'debug',  // The query parameter which enables debug output
     errorDir: 'errors',   // The location of the error templates
-    rethrowErrors: false  // Enable this if there is more error handling middleware to come
+    rethrowErrors: false  // Enable this if there's more error middleware
 }));
 ```
 The `?debug` feature gives you access to a stack trace for the error. If the error represents multiple failed required fields, they will all be listed.
