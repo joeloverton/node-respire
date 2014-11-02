@@ -73,7 +73,7 @@ app.get('/u/:username', function (req, res, next) {
     .then(respire.demand('userDetails', 'userFeed'))  // Rejects if a demanded key rejected
     .then(res.renderInto('pages/user'))   
     .then(res.respond.withHTML)           
-    .catch(res.respond.withErrorPage)                 // If something goes wrong, serve an error page
+    .catch(res.respond.withErrorPage)                 // Serve an error page
     .done();                              
 });
 ```
@@ -126,7 +126,7 @@ It's also possible to render the output of one view straight into another:
 app.get('/u/:username', function (req, res, next) {
   req.process(getUserData)                
     .then(res.renderInto('pages/user'))  
-    .then(res.renderInto('chrome/standard-page'))   // Input will be the RenderedContext from the previous view
+    .then(res.renderInto('chrome/standard-page'))   // Fields will be from the previous RenderedContext
     .then(res.respond.withHTML)           
     .catch(next)              
     .done();                              
