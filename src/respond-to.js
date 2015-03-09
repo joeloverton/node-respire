@@ -13,7 +13,7 @@ function respondTo (reqOrRes) {
     var req = res.req;
 
     var respondWith = function (headers, renderedContext) {
-        var statusCode = renderedContext.attr && renderedContext.attr('status') || 200;
+        var statusCode = renderedContext.attr && renderedContext.attr('status') || '200';
         res.set(headers || {})
             .status(statusCode)
             .send(renderedContext.toString());
@@ -39,18 +39,21 @@ function respondTo (reqOrRes) {
                 }
             })
                 .then(res.renderInto(JSON.stringify))
-                .invoke('attr', 'status', err.statusCode)
+                .invoke('attr', 'status', err.statusCode || '500')
                 .then(res.respond.withJSON);
         },
 
-        withErrorPage: function (errorTemplateDir, err) {
+        withErrorPage: function (err, errorPath) {
+            
+            errorPath = errorPath || 'errors';
+
             var errCode = err.statusCode || 500;
             var fields = {
                 code: errCode,
                 message: err.message
             };
-            var exactTemplate = path.join(errorTemplateDir, errCode+'');
-            var generalTemplate = path.join(errorTemplateDir, Math.floor(errCode / 100) + 'xx');
+            var exactTemplate = path.join(errorPath, errCode+'');
+            var generalTemplate = path.join(errorPath, Math.floor(errCode / 100) + 'xx');
 
             return render(exactTemplate, res, fields)
                 .fail(_.partial(render, generalTemplate, res, fields))

@@ -14,7 +14,7 @@ module.exports = function (opts) {
         var respond = respondTo(req);
         debug && typeof req.query[debugParam] !== 'undefined'
             ? respond.withErrorJSON(err)
-            : respond.withErrorPage(errorDir, err);
+            : respond.withErrorPage(err, errorDir);
         rethrow && next(err);
     }
 };
