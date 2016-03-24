@@ -1,5 +1,5 @@
 var Q = require('q');
-var respire = require('../../../respire');
+var respire = require('../../index');
 var _ = require('lodash');
 
 module.exports = function (app) {
