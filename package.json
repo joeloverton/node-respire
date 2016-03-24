@@ -28,16 +28,16 @@
   },
   "homepage": "https://github.com/joeloverton/node-respire",
   "devDependencies": {
-    "mocha": "^2.0.1",
+    "consolidate": "^0.14.0",
     "express": "^4.10.1",
-    "supertest": "^0.14.0",
-    "consolidate": "^0.10.0",
-    "handlebars": "^2.0.0",
-    "should": "^4.1.0"
+    "handlebars": "^4.0.5",
+    "mocha": "^2.0.1",
+    "should": "^8.3.0",
+    "supertest": "^1.2.0"
   },
   "dependencies": {
     "lodash": "^4.6.1",
     "q": "^1.0.1",
-    "q-combinators": "^0.4.2"
+    "q-combinators": "^0.6.1"
   }
 }
