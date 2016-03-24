@@ -24,7 +24,7 @@ function renderUserPage(req, res, next) {
 }
 
 function renderSomeData (req, res, next) {
-    Q({name: 'nigella'})               
+    Q({name: 'nigella'})
         .then(res.renderInto(JSON.stringify))
         .then(res.respond.withJSON)
         .catch(next).done();
@@ -46,8 +46,8 @@ function generateFailures (req) {
 }
 
 function serve201 (req, res, next) {
-    req.process(getUserData)  
-        .then(respire.demand('name'))             
+    req.process(getUserData)
+        .then(respire.demand('name'))
         .then(res.renderInto(JSON.stringify))
         .invoke('attr', 'status', 201)
         .then(res.respond.withJSON)
