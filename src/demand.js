@@ -14,9 +14,9 @@ module.exports = function demand () {
                 return QC.object.fulfilled(objectOfPromises);
             }, function (failures) {
                 var messages = _.map(failures, getMessage);
-                var error = _(failures).min(function (err) {
+                var error = _.minBy(_.toArray(failures), function (err) {
                     return err.statusCode || 500;
-                }).value();
+                });
                 error.statusCode = error.statusCode || 500;
                 error.allErrors = _.zipObject(_.keys(failures), messages)
                 throw error;
